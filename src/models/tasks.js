@@ -5,7 +5,7 @@ import storage from '../lib/storage/file.js';
 // import storage from 'mongostuff';
 
 
-class Notes {
+class Tasks {
 
   static findOne(id) {
     let query = { _id:id };
@@ -13,7 +13,7 @@ class Notes {
   }
 
   static find(query) {
-    console.log('from notes');
+    console.log('from tasks');
     return storage.find(query);
   }
 
@@ -36,4 +36,4 @@ class Notes {
 
 }
 
-export default Notes;
+export default Tasks;
