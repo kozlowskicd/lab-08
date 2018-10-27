@@ -27,6 +27,7 @@ storage.find = query => {
 };
 
 storage.delete = id => {
+  console.log(id, database[id]);
   return new Promise( (resolve,reject) => {
     if ( database[id] ) {
       delete database[id];
