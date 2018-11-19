@@ -13,28 +13,31 @@ class Users {
     return storage.find(query);
   }
   static save(data) {
+    validateInput(data);
     return storage.save(data);
   }
   static delete(id) {
     return storage.delete(id);
   }
   static put(id, data) {
+    data._id = id;
     return storage.save(data);
   }
   static patch(id, data) {
     data._id = id;
     return storage.save(data);
   }
-  static validateInput(data) {
-    if (data.firstname && data.lastname && data.email && data.role) {
-      if (data.role === 'user' || data.role === 'editor' || data.role === 'admin') {
-        if (data.email == /^[\w]+@+[\w]+.+[\w]/) {
-          return(data);
-        }else {return(null);}
+}
+const validateInput = (data) => {
+  if (data.firstname && data.lastname && data.email && data.role) {
+    if (data.role === 'user' || data.role === 'editor' || data.role === 'admin') {
+      if (data.email == /^[\w]+@+[\w]+.+[\w]/) {
+        return(data);
       }else {return(null);}
     }else {return(null);}
-  }
-}
+  }else {return(null);}
+};
+
 // _id, firstname, lastname, email, role; 
 // Perform the following data validations on save and update:
 

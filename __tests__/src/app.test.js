@@ -25,7 +25,7 @@ describe('api server', () => {
         expect(err).not.toBeDefined();
       });
   });
-  it('should respond proprly on request to /api/v1/notes', () => {
+  it('should respond properly on request to /api/v1/notes', () => {
     return mockRequest
       .get('/api/v1/notes')
       .then(results => {
@@ -64,15 +64,8 @@ describe('user routes', () => {
         expect(results.status).toBe(200);
       });
   });
-  it('returns get on /api/v1/users:id', () => {
-    return mockRequest
-      .get('/api/v1/users/2')
-      .then(results => {
-        expect(results.status).toBe(200);
-      });
-  });
   it('can post on /api/v1/users', () => {
-    let postData = {name:'testing', text:'test text'};
+    let postData = {name:'testing', text:'test text', _id:2};
     return mockRequest
       .post('/api/v1/users')
       .send(postData)
@@ -81,12 +74,24 @@ describe('user routes', () => {
         expect(results.body.name).toEqual(postData.name);
       });
   });
-  it('can delete data', () => {
+  it('returns get on /api/v1/users:id', () => {
     return mockRequest
-      .delete('/api/v1/users/2')
+      .get('/api/v1/users/2')
       .then(results => {
         expect(results.status).toBe(200);
-        expect(results.body._id).toBeFalsy();
+      });
+  });
+  it('can delete data', () => {
+    let postData = {name:'testing', text:'test text', _id:2};
+    return mockRequest
+      .post('/api/v1/users')
+      .send(postData)
+      .then(() => {
+        return mockRequest
+          .delete('/api/v1/users/2')
+          .then(results => {
+            expect(results.status).toBe(200);
+          });
       });
   });
 });

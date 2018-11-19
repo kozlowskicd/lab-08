@@ -12,7 +12,7 @@ let sendJSON = (data,response) => {
   response.end();
 };
 
-router.get('/api/v1/users', (request, response, next) => {
+router.get('/api/v1/users/', (request, response, next) => {
   users.find()
     .then(data => {
       const output = {
@@ -30,7 +30,7 @@ router.get('/api/v1/users/:id', (request, response, next) => {
     .catch(next);
 });
 
-router.post('/api/v1/users', (request, response, next) => {
+router.post('/api/v1/users/', (request, response, next) => {
   users.save(request.body)
     .then(results => sendJSON(results, response))
     .catch(next);

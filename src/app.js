@@ -26,6 +26,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(notesRouter);
 app.use(usersRouter);
 // app.use(apiRouter);
+
 // Catchalls
 app.use(notFound);
 app.use(errorHandler);

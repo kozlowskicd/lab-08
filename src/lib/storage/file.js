@@ -6,10 +6,11 @@ import util from 'util';
 
 const writeToFile = util.promisify(fs.writeFile);
 let storage = {};
-let databaseLocation = '../../../data/users.json';
-let database = require(databaseLocation);
+let databaseLocation = '../../../data/db.json';
+let database;
 
 storage.find = query => {
+  database = require(databaseLocation);
   let id = query && query._id;
   return new Promise( (resolve,reject) => {
     if (id) {
@@ -27,6 +28,7 @@ storage.find = query => {
 };
 
 storage.delete = id => {
+  database = require(databaseLocation);
   console.log(id, database[id]);
   return new Promise( (resolve,reject) => {
     if ( database[id] ) {
@@ -43,6 +45,7 @@ storage.delete = id => {
 };
 
 storage.save = (data) => {
+  database = require(databaseLocation);
   return new Promise( (resolve,reject) => {
     data._id = data._id || uuid();
     let record = Object.assign({}, database[data._id], data);
@@ -56,7 +59,7 @@ storage.save = (data) => {
 storage.saveDatabase = () => {
   let data = JSON.stringify(database);
   return writeToFile(databaseLocation, data)
-    .then(result => true)
+    .then(result => {return true;})
     .catch(err => err);
 };
 
