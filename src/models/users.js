@@ -17,6 +17,7 @@ class Users {
     return storage.save(data);
   }
   static delete(id) {
+    console.log(id);
     return storage.delete(id);
   }
   static put(id, data) {

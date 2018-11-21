@@ -29,11 +29,11 @@ storage.find = query => {
 
 storage.delete = id => {
   database = require(databaseLocation);
-  console.log(id, database[id]);
+  console.log(id, database.users[id]);
   return new Promise( (resolve,reject) => {
     if ( database[id] ) {
-      delete database[id];
-      storage.saveDatabase()
+      delete database.users[id];
+      this.saveDatabase()
         .then(() => resolve(database[id]))
         .catch(err => reject(err));
     }
@@ -43,6 +43,7 @@ storage.delete = id => {
     }
   });
 };
+
 
 storage.save = (data) => {
   database = require(databaseLocation);

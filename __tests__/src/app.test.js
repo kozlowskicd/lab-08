@@ -82,13 +82,13 @@ describe('user routes', () => {
       });
   });
   it('can delete data', () => {
-    let postData = {name:'testing', text:'test text', _id:2};
+    let postData = {name:'testing', text:'test text', _id:3};
     return mockRequest
       .post('/api/v1/users')
       .send(postData)
       .then(() => {
         return mockRequest
-          .delete('/api/v1/users/2')
+          .delete('/api/v1/users/3')
           .then(results => {
             expect(results.status).toBe(200);
           });
