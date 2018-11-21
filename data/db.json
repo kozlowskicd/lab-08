@@ -1,0 +1,32 @@
+{
+    "users":[
+    {
+        "firstname": "test",
+        "lastname": "Kozlowski",
+        "email": "test@gmail.com",
+        "role": "user",
+        "_id": "3e0b48b0-da17-11e8-adbc-7f6b8c8fccad"
+    },
+    {
+        "firstname": "test",
+        "lastname": "Kozlowski",
+        "email": "test@gmail.com",
+        "role": "user",
+        "_id": "3f321570-da17-11e8-adbc-7f6b8c8fccad"
+    },
+    {
+        "firstname": "test",
+        "lastname": "Kozlowski",
+        "email": "test@gmail.com",
+        "role": "user",
+        "_id": "2"
+    }
+    ],
+    "notes":[
+        {
+        "title":"test title",
+        "text":"test text",
+        "_id": "1"
+        }
+    ]
+}

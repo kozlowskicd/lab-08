@@ -9,6 +9,8 @@ import morgan from 'morgan';
 import errorHandler from './middleware/error.js';
 import notFound from './middleware/404.js';
 import notesRouter from './api/notes.js';
+import usersRouter from './api/users.js';
+// import apiRouter from './api/v1.js';
 
 // Prepare the express app
 const app = express();
@@ -22,6 +24,8 @@ app.use(express.urlencoded({extended:true}));
 
 // Routes
 app.use(notesRouter);
+app.use(usersRouter);
+// app.use(apiRouter);
 
 // Catchalls
 app.use(notFound);
